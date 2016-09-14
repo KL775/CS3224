@@ -6,9 +6,6 @@ char buf[512];
 void head(int fd, int maxLine, char *name){
 	int i, n;
 	int line = 0;
-	if (fd == 0){
-		line = 10;
-	}
 	while((n = read(fd, buf, sizeof(buf))) > 0){ 
 		for(i = 0; i < n; ++i){
 			if (line == maxLine){
@@ -30,7 +27,7 @@ int main(int argc, char *argv[]){
 	int fd, i;
 	char* maxLine;
 	if (argc <= 1){
-		head(0, 0, "");
+		head(0, 10, "");
 		exit();
 	}
 	if (argc == 3){
