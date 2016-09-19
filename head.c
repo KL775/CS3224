@@ -26,12 +26,17 @@ void head(int fd, int maxLine, char *name){
 int main(int argc, char *argv[]){
 	int fd, i;
 	char* maxLine;
+
 	if (argc <= 1){
 		head(0, 10, "");
 		exit();
 	}
-	if (argc == 3){
+	if (argv[1][0] == '-'){
 		maxLine = (char*) &argv[1][1];
+		if (argc == 2){
+			head(0, atoi(maxLine), "");
+			exit();
+		}
 	}
 	else{
 		maxLine = "10";
